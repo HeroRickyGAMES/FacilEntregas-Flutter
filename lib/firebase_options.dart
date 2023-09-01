@@ -50,20 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAZxgVG2Z0CQKBWDMjmlQDtGHN9GdG9-tk',
-    appId: '1:404344995033:web:8a8a4e0fc212f67dbd92c8',
-    messagingSenderId: '404344995033',
-    projectId: 'pedefacilentregadores-f5b14',
-    authDomain: 'pedefacilentregadores-f5b14.firebaseapp.com',
-    storageBucket: 'pedefacilentregadores-f5b14.appspot.com',
-    measurementId: 'G-4YGDCSBPQG',
+    apiKey: 'AIzaSyBDAQQlFdStJMymcV6h7a-IWan56Ydl6gU',
+    appId: '1:750985511375:web:061cf0fbeba8dcc0c612ba',
+    messagingSenderId: '750985511375',
+    projectId: 'facilentregas-cd4c5',
+    authDomain: 'facilentregas-cd4c5.firebaseapp.com',
+    storageBucket: 'facilentregas-cd4c5.appspot.com',
+    measurementId: 'G-9VLVL4NJCG',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA8W40DRtOfD1eTwxIOWmUkrwMb7200b18',
-    appId: '1:404344995033:android:6b44d4c1a1010076bd92c8',
-    messagingSenderId: '404344995033',
-    projectId: 'pedefacilentregadores-f5b14',
-    storageBucket: 'pedefacilentregadores-f5b14.appspot.com',
+    apiKey: 'AIzaSyD3EflawlJO2aG4T0h3Ygeo3JWl6ChIClU',
+    appId: '1:750985511375:android:b35b9d3fe983d640c612ba',
+    messagingSenderId: '750985511375',
+    projectId: 'facilentregas-cd4c5',
+    storageBucket: 'facilentregas-cd4c5.appspot.com',
   );
 }

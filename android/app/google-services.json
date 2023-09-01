@@ -1,62 +1,33 @@
 {
   "project_info": {
-    "project_number": "404344995033",
-    "project_id": "pedefacilentregadores-f5b14",
-    "storage_bucket": "pedefacilentregadores-f5b14.appspot.com"
+    "project_number": "750985511375",
+    "project_id": "facilentregas-cd4c5",
+    "storage_bucket": "facilentregas-cd4c5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:404344995033:android:6b44d4c1a1010076bd92c8",
+        "mobilesdk_app_id": "1:750985511375:android:b35b9d3fe983d640c612ba",
         "android_client_info": {
-          "package_name": "com.herorickystudios.pedefacil_entregadores_flutter"
+          "package_name": "com.hrs.flutter.facilentregas"
         }
       },
       "oauth_client": [
         {
-          "client_id": "404344995033-4cthpu392np2klgbvf84ecm2q94184n4.apps.googleusercontent.com",
+          "client_id": "750985511375-c56su2r6tj74s0rficchgmq73b1n2u18.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA8W40DRtOfD1eTwxIOWmUkrwMb7200b18"
+          "current_key": "AIzaSyD3EflawlJO2aG4T0h3Ygeo3JWl6ChIClU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "404344995033-4cthpu392np2klgbvf84ecm2q94184n4.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:404344995033:android:7b0e696d0afec34bbd92c8",
-        "android_client_info": {
-          "package_name": "com.herorickystudiosoficial.pedefacil_entregas"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "404344995033-4cthpu392np2klgbvf84ecm2q94184n4.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyA8W40DRtOfD1eTwxIOWmUkrwMb7200b18"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "404344995033-4cthpu392np2klgbvf84ecm2q94184n4.apps.googleusercontent.com",
+              "client_id": "750985511375-c56su2r6tj74s0rficchgmq73b1n2u18.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
