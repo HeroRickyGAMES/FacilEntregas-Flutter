@@ -15,7 +15,6 @@ import 'package:pedefacil_entregadores_flutter/modalSolicitacaoEntrega/Solicitac
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uuid/uuid.dart';
 
-
 //desenvolvido por HeroRickyGames
 
 class MainLista extends StatefulWidget {
@@ -98,7 +97,7 @@ class _MainListaState extends State<MainLista> {
         final preferenceId = jsonDecode(response.body)['id'];
         print('Preference created with ID: $preferenceId');
         
-        var uuid = Uuid().v4();
+        var uuid = const Uuid().v4();
         var UIDUser = FirebaseAuth.instance.currentUser?.uid;
 
         if(kIsWeb){
@@ -187,7 +186,7 @@ class _MainListaState extends State<MainLista> {
             barrierDismissible: false,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text(
+                title: const Text(
                   'Pagamento para ajudar o desenvolvedor',
                   style: TextStyle(
                       fontSize: 19,
@@ -203,12 +202,12 @@ class _MainListaState extends State<MainLista> {
                     children: [
                       Text(
                         'Para que a plataforma FacilEntregas continue funcionando corretamente, nós precisamos de um valor minimo de R\$${valor},00 para utilização do app, mas se quiser dar mais, seremos gratos!\nA cobrança virá toda a segunda feira.',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 19
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         child:
                         TextFormField(
                           onChanged: (vaalor){
@@ -219,7 +218,7 @@ class _MainListaState extends State<MainLista> {
                           obscureText: false,
                           //enableSuggestions: false,
                           //autocorrect: false,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             hintText: 'Valor',
                             hintStyle: TextStyle(
@@ -252,7 +251,7 @@ class _MainListaState extends State<MainLista> {
                         Navigator.pop(context);
                       }
                     }
-                  }, child: Text(
+                  }, child: const Text(
                     'Ok',
                     style: TextStyle(
                         fontSize: 19
@@ -288,7 +287,7 @@ class _MainListaState extends State<MainLista> {
               barrierDismissible: false,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: Text(
+                  title: const Text(
                     'Pagamento para ajudar o desenvolvedor',
                     style: TextStyle(
                         fontSize: 19,
@@ -297,7 +296,7 @@ class _MainListaState extends State<MainLista> {
                   ),
                   content: Text(
                     'Para que a plataforma PedeFacilEntregadores continue funcionando corretamente, nós precisamos de um valor de R\$${valor},00 para utilização do app\nA cobrança virá toda a segunda feira.',
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 19
                     ),
                   ),
@@ -305,7 +304,7 @@ class _MainListaState extends State<MainLista> {
                     TextButton(onPressed: (){
                       Navigator.pop(context);
                       pagamentoPorUtilizacao(valor);
-                    }, child: Text(
+                    }, child: const Text(
                       'Ok',
                       style: TextStyle(
                           fontSize: 19
@@ -327,7 +326,7 @@ class _MainListaState extends State<MainLista> {
         }
       }
     }
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       if(DateTime.monday == DateTime.now().weekday){
         verificarsePagou();
       }
@@ -339,7 +338,7 @@ class _MainListaState extends State<MainLista> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Center(
+            const Center(
               child: Text(
                   'Itens na lista',
                 style: TextStyle(
@@ -388,7 +387,7 @@ class _MainListaState extends State<MainLista> {
               }
             },
                 child:
-                Icon(
+                const Icon(
                     Icons.settings
                 )
             )
@@ -405,7 +404,7 @@ class _MainListaState extends State<MainLista> {
         builder: (BuildContext context,
             AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -417,7 +416,7 @@ class _MainListaState extends State<MainLista> {
                 color: Colors.black,
                 width: 1.0,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              borderRadius: const BorderRadius.all(Radius.circular(5.0)),
             ),
             child: ListView(
               padding: const EdgeInsets.all(15),
@@ -425,22 +424,22 @@ class _MainListaState extends State<MainLista> {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.white,
                         width: 1.0,
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                      borderRadius: const BorderRadius.all(Radius.circular(5.0)),
                     ),
                     child: Column(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
-                                'Quem recebe: ' + documents['NomedoProduto'],
-                              style: TextStyle(
+                                'Quem recebe: ${documents['NomedoProduto']}' ,
+                              style: const TextStyle(
                                 fontSize: 18,
                                 color: Colors.white
                               ),
@@ -448,11 +447,11 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
-                              'Local da Loja: ' + documents['Localização'],
-                              style: TextStyle(
+                              'Local da Loja: ${documents['Localização']}',
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                               ),
@@ -460,11 +459,11 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
-                              'Sendo entregue por: ' + documents['entreguePor'],
-                              style: TextStyle(
+                              'Sendo entregue por: ${documents['entreguePor']}',
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                               ),
@@ -472,11 +471,11 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
                               documents['Preço'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                               ),
@@ -484,11 +483,11 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
-                              'Pertence à: ' + documents['PertenceA'],
-                              style: TextStyle(
+                              'Pertence à: ${documents['PertenceA']}',
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                               ),
@@ -496,11 +495,11 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
-                              'Status: ' + documents['statusDoProduto'],
-                              style: TextStyle(
+                              'Status: ${documents['statusDoProduto']}',
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                               ),
@@ -508,7 +507,7 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: ElevatedButton(
                               onPressed: () async {
@@ -528,13 +527,13 @@ class _MainListaState extends State<MainLista> {
                                         context: context,
                                         builder: (BuildContext context) {
                                           return AlertDialog(
-                                            title: Text(
+                                            title: const Text(
                                               'Deseja Deletar esse pedido?',
                                               style: TextStyle(
                                                   fontSize: 19
                                               ),
                                             ),
-                                            content: Text(
+                                            content: const Text(
                                               'A partir do momento que você deletar esse pedido, ele não irá aparecer para mais ninguém!',
                                               style: TextStyle(
                                                   fontSize: 18
@@ -545,7 +544,7 @@ class _MainListaState extends State<MainLista> {
 
                                                 Navigator.pop(context);
 
-                                              }, child: Text(
+                                              }, child: const Text(
                                                 'Não',
                                                 style: TextStyle(
                                                     fontSize: 18
@@ -570,7 +569,7 @@ class _MainListaState extends State<MainLista> {
                                                   Navigator.pop(context);
                                                 });
 
-                                              }, child: Text(
+                                              }, child: const Text(
                                                 'Sim, delete!',
                                                 style: TextStyle(
                                                     fontSize: 19
@@ -588,13 +587,13 @@ class _MainListaState extends State<MainLista> {
                                           context: context,
                                           builder: (BuildContext context) {
                                             return AlertDialog(
-                                              title: Text(
+                                              title: const Text(
                                                 'Fazer o pagamento agora?',
                                                 style: TextStyle(
                                                     fontSize: 19
                                                 ),
                                               ),
-                                              content: Text(
+                                              content: const Text(
                                                 'Fazer o pagamento agora?\n É recomendado fazer o pagamento agora!',
                                                 style: TextStyle(
                                                     fontSize: 19
@@ -693,7 +692,7 @@ class _MainListaState extends State<MainLista> {
                                                   }
 
 
-                                                }, child: Text(
+                                                }, child: const Text(
                                                   'Pagar agora',
                                                   style: TextStyle(
                                                       fontSize: 19
@@ -718,13 +717,13 @@ class _MainListaState extends State<MainLista> {
                                         context: context,
                                         builder: (BuildContext context) {
                                           return AlertDialog(
-                                            title: Text(
+                                            title: const Text(
                                               'Fazer essa entrega?',
                                               style: TextStyle(
                                                   fontSize: 19
                                               ),
                                             ),
-                                            content: Text(
+                                            content: const Text(
                                               'Você deseja fazer essa entrega?',
                                               style: TextStyle(
                                                   fontSize: 19
@@ -733,7 +732,7 @@ class _MainListaState extends State<MainLista> {
                                             actions: [
                                               TextButton(onPressed: (){
                                                 Navigator.pop(context);
-                                              }, child: Text(
+                                              }, child: const Text(
                                                 'Não',
                                                 style: TextStyle(
                                                     fontSize: 19
@@ -774,7 +773,7 @@ class _MainListaState extends State<MainLista> {
                                                   Navigator.pop(context);
                                                 });
 
-                                              }, child: Text(
+                                              }, child: const Text(
                                                 'Sim',
                                                 style: TextStyle(
                                                     fontSize: 19
@@ -802,13 +801,13 @@ class _MainListaState extends State<MainLista> {
                                             context: context,
                                             builder: (BuildContext context) {
                                               return AlertDialog(
-                                                title: Text(
+                                                title: const Text(
                                                   'Chegou ao destino?',
                                                   style: TextStyle(
                                                       fontSize: 19
                                                   ),
                                                 ),
-                                                content: Text(
+                                                content: const Text(
                                                   'Você chegou á loja?',
                                                   style: TextStyle(
                                                       fontSize: 19
@@ -817,7 +816,7 @@ class _MainListaState extends State<MainLista> {
                                                 actions: [
                                                   TextButton(onPressed: (){
                                                     Navigator.pop(context);
-                                                  }, child: Text(
+                                                  }, child: const Text(
                                                     'Não',
                                                     style: TextStyle(
                                                         fontSize: 19
@@ -843,7 +842,7 @@ class _MainListaState extends State<MainLista> {
                                                       Navigator.pop(context);
                                                     });
 
-                                                  }, child: Text(
+                                                  }, child: const Text(
                                                     'Sim',
                                                     style: TextStyle(
                                                         fontSize: 19
@@ -874,13 +873,13 @@ class _MainListaState extends State<MainLista> {
                                               context: context,
                                               builder: (BuildContext context) {
                                                 return AlertDialog(
-                                                  title: Text(
+                                                  title: const Text(
                                                     'Aguarde o pagamento ser finalizado pelo lojista!',
                                                     style: TextStyle(
                                                         fontSize: 19
                                                     ),
                                                   ),
-                                                  content: Text(
+                                                  content: const Text(
                                                     'Aguarde o pagamento ser finalizado pelo lojista!',
                                                     style: TextStyle(
                                                         fontSize: 19
@@ -889,7 +888,7 @@ class _MainListaState extends State<MainLista> {
                                                   actions: [
                                                     TextButton(onPressed: (){
                                                     Navigator.pop(context);
-                                                    }, child: Text(
+                                                    }, child: const Text(
                                                       'Ok',
                                                       style: TextStyle(
                                                           fontSize: 19
@@ -914,13 +913,13 @@ class _MainListaState extends State<MainLista> {
                                                 context: context,
                                                 builder: (BuildContext context) {
                                                   return AlertDialog(
-                                                    title: Text(
+                                                    title: const Text(
                                                       'Fazer a entrega?',
                                                       style: TextStyle(
                                                           fontSize: 19
                                                       ),
                                                     ),
-                                                    content: Text(
+                                                    content: const Text(
                                                       'Você deseja realisar a entrega até o endereço?',
                                                       style: TextStyle(
                                                           fontSize: 19
@@ -929,7 +928,7 @@ class _MainListaState extends State<MainLista> {
                                                     actions: [
                                                       TextButton(onPressed: (){
                                                         Navigator.pop(context);
-                                                      }, child: Text(
+                                                      }, child: const Text(
                                                         'Não',
                                                         style: TextStyle(
                                                             fontSize: 19
@@ -959,7 +958,7 @@ class _MainListaState extends State<MainLista> {
 
                                                           Navigator.pop(context);
                                                         });
-                                                      }, child: Text(
+                                                      }, child: const Text(
                                                         'Sim',
                                                         style: TextStyle(
                                                             fontSize: 19
@@ -982,13 +981,13 @@ class _MainListaState extends State<MainLista> {
                                                 context: context,
                                                 builder: (BuildContext context) {
                                                   return AlertDialog(
-                                                    title: Text(
+                                                    title: const Text(
                                                       'Você chegou?',
                                                       style: TextStyle(
                                                           fontSize: 19
                                                       ),
                                                     ),
-                                                    content: Text(
+                                                    content: const Text(
                                                       'Você chegou?',
                                                       style: TextStyle(
                                                           fontSize: 19
@@ -1003,7 +1002,7 @@ class _MainListaState extends State<MainLista> {
                                                         MapsLauncher.launchCoordinates(location['latitude']!, location['longitude']!, 'Entrega');
 
                                                         Navigator.pop(context);
-                                                      }, child: Text(
+                                                      }, child: const Text(
                                                         'Desejo ver a localização novamente',
                                                         style: TextStyle(
                                                             fontSize: 19
@@ -1012,7 +1011,7 @@ class _MainListaState extends State<MainLista> {
                                                       ),
                                                       TextButton(onPressed: (){
                                                         Navigator.pop(context);
-                                                      }, child: Text(
+                                                      }, child: const Text(
                                                         'Não',
                                                         style: TextStyle(
                                                             fontSize: 19
@@ -1036,7 +1035,7 @@ class _MainListaState extends State<MainLista> {
                                                           );
                                                           Navigator.pop(context);
                                                         });
-                                                      }, child: Text(
+                                                      }, child: const Text(
                                                         'Sim',
                                                         style: TextStyle(
                                                             fontSize: 19
@@ -1056,7 +1055,7 @@ class _MainListaState extends State<MainLista> {
                                   }
                                 }
                               },
-                              child: Text(
+                              child: const Text(
                                   'Mudar Status',
                                 style: TextStyle(
                                     fontSize: 18,
@@ -1086,7 +1085,7 @@ class _MainListaState extends State<MainLista> {
         builder: (BuildContext context,
             AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -1098,7 +1097,7 @@ class _MainListaState extends State<MainLista> {
                 color: Colors.black,
                 width: 1.0,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              borderRadius: const BorderRadius.all(Radius.circular(5.0)),
             ),
             child: ListView(
               padding: const EdgeInsets.all(15),
@@ -1106,22 +1105,22 @@ class _MainListaState extends State<MainLista> {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.white,
                         width: 1.0,
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                      borderRadius: const BorderRadius.all(Radius.circular(5.0)),
                     ),
                     child: Column(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
                               'Quem recebe: ' + documents['NomedoProduto'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                               ),
@@ -1129,11 +1128,11 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
                               'Local da Loja: ' + documents['Localização'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                               ),
@@ -1141,11 +1140,11 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
                               'Sendo entregue por: ' + documents['entreguePor'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                               ),
@@ -1153,11 +1152,11 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
                               documents['Preço'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                               ),
@@ -1165,11 +1164,11 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
                               'Pertence à: ' + documents['PertenceA'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                               ),
@@ -1177,11 +1176,11 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: Text(
                               'Status: ' + documents['statusDoProduto'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white
                               ),
@@ -1189,7 +1188,7 @@ class _MainListaState extends State<MainLista> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           child: Center(
                             child: ElevatedButton(
                               onPressed: () async {
@@ -1209,13 +1208,13 @@ class _MainListaState extends State<MainLista> {
                                         context: context,
                                         builder: (BuildContext context) {
                                           return AlertDialog(
-                                            title: Text(
+                                            title: const Text(
                                               'Deseja Deletar esse pedido?',
                                               style: TextStyle(
                                                   fontSize: 19
                                               ),
                                             ),
-                                            content: Text(
+                                            content: const Text(
                                               'A partir do momento que você deletar esse pedido, ele não irá aparecer para mais ninguém!',
                                               style: TextStyle(
                                                   fontSize: 18
@@ -1226,7 +1225,7 @@ class _MainListaState extends State<MainLista> {
 
                                                 Navigator.pop(context);
 
-                                              }, child: Text(
+                                              }, child: const Text(
                                                 'Não',
                                                 style: TextStyle(
                                                     fontSize: 18
@@ -1251,7 +1250,7 @@ class _MainListaState extends State<MainLista> {
                                                   Navigator.pop(context);
                                                 });
 
-                                              }, child: Text(
+                                              }, child: const Text(
                                                 'Sim, delete!',
                                                 style: TextStyle(
                                                     fontSize: 19
@@ -1269,13 +1268,13 @@ class _MainListaState extends State<MainLista> {
                                           context: context,
                                           builder: (BuildContext context) {
                                             return AlertDialog(
-                                              title: Text(
+                                              title: const Text(
                                                 'Fazer o pagamento agora?',
                                                 style: TextStyle(
                                                     fontSize: 19
                                                 ),
                                               ),
-                                              content: Text(
+                                              content: const Text(
                                                 'Fazer o pagamento agora?\n É recomendado fazer o pagamento agora!',
                                                 style: TextStyle(
                                                     fontSize: 19
@@ -1300,7 +1299,7 @@ class _MainListaState extends State<MainLista> {
                                                     );
                                                     Navigator.pop(context);
                                                   });
-                                                }, child: Text(
+                                                }, child: const Text(
                                                   'Pagar apenas depois',
                                                   style: TextStyle(
                                                       fontSize: 19
@@ -1343,7 +1342,7 @@ class _MainListaState extends State<MainLista> {
                                                     final response2 = await http.get(Uri.parse(url));
 
                                                     Fluttertoast.showToast(
-                                                        msg: 'O status foi ' + response2.statusCode.toString(),
+                                                        msg: 'O status foi ${response2.statusCode}',
                                                         toastLength: Toast.LENGTH_SHORT,
                                                         gravity: ToastGravity.CENTER,
                                                         timeInSecForIosWeb: 1,
@@ -1396,7 +1395,7 @@ class _MainListaState extends State<MainLista> {
                                                     print('Erro ao receber os dados: ${response.statusCode}.');
                                                   }
 
-                                                }, child: Text(
+                                                }, child: const Text(
                                                   'Pagar agora',
                                                   style: TextStyle(
                                                       fontSize: 19
@@ -1421,13 +1420,13 @@ class _MainListaState extends State<MainLista> {
                                         context: context,
                                         builder: (BuildContext context) {
                                           return AlertDialog(
-                                            title: Text(
+                                            title: const Text(
                                               'Fazer essa entrega?',
                                               style: TextStyle(
                                                   fontSize: 19
                                               ),
                                             ),
-                                            content: Text(
+                                            content: const Text(
                                               'Você deseja fazer essa entrega?',
                                               style: TextStyle(
                                                   fontSize: 19
@@ -1436,7 +1435,7 @@ class _MainListaState extends State<MainLista> {
                                             actions: [
                                               TextButton(onPressed: (){
                                                 Navigator.pop(context);
-                                              }, child: Text(
+                                              }, child: const Text(
                                                 'Não',
                                                 style: TextStyle(
                                                     fontSize: 19
@@ -1479,7 +1478,7 @@ class _MainListaState extends State<MainLista> {
                                                   Navigator.pop(context);
                                                 });
 
-                                              }, child: Text(
+                                              }, child: const Text(
                                                 'Sim',
                                                 style: TextStyle(
                                                     fontSize: 19
@@ -1507,13 +1506,13 @@ class _MainListaState extends State<MainLista> {
                                             context: context,
                                             builder: (BuildContext context) {
                                               return AlertDialog(
-                                                title: Text(
+                                                title: const Text(
                                                   'Chegou ao destino?',
                                                   style: TextStyle(
                                                       fontSize: 19
                                                   ),
                                                 ),
-                                                content: Text(
+                                                content: const Text(
                                                   'Você chegou á loja?',
                                                   style: TextStyle(
                                                       fontSize: 19
@@ -1522,7 +1521,7 @@ class _MainListaState extends State<MainLista> {
                                                 actions: [
                                                   TextButton(onPressed: (){
                                                     Navigator.pop(context);
-                                                  }, child: Text(
+                                                  }, child: const Text(
                                                     'Não',
                                                     style: TextStyle(
                                                         fontSize: 19
@@ -1548,7 +1547,7 @@ class _MainListaState extends State<MainLista> {
                                                       Navigator.pop(context);
                                                     });
 
-                                                  }, child: Text(
+                                                  }, child: const Text(
                                                     'Sim',
                                                     style: TextStyle(
                                                         fontSize: 19
@@ -1579,13 +1578,13 @@ class _MainListaState extends State<MainLista> {
                                               context: context,
                                               builder: (BuildContext context) {
                                                 return AlertDialog(
-                                                  title: Text(
+                                                  title: const Text(
                                                     'Aguarde o pagamento ser finalizado pelo lojista!',
                                                     style: TextStyle(
                                                         fontSize: 19
                                                     ),
                                                   ),
-                                                  content: Text(
+                                                  content: const Text(
                                                     'Aguarde o pagamento ser finalizado pelo lojista!',
                                                     style: TextStyle(
                                                         fontSize: 19
@@ -1594,7 +1593,7 @@ class _MainListaState extends State<MainLista> {
                                                   actions: [
                                                     TextButton(onPressed: (){
                                                       Navigator.pop(context);
-                                                    }, child: Text(
+                                                    }, child: const Text(
                                                       'Ok',
                                                       style: TextStyle(
                                                           fontSize: 19
@@ -1619,13 +1618,13 @@ class _MainListaState extends State<MainLista> {
                                                 context: context,
                                                 builder: (BuildContext context) {
                                                   return AlertDialog(
-                                                    title: Text(
+                                                    title: const Text(
                                                       'Fazer a entrega?',
                                                       style: TextStyle(
                                                           fontSize: 19
                                                       ),
                                                     ),
-                                                    content: Text(
+                                                    content: const Text(
                                                       'Você deseja realisar a entrega até o endereço?',
                                                       style: TextStyle(
                                                           fontSize: 19
@@ -1634,7 +1633,7 @@ class _MainListaState extends State<MainLista> {
                                                     actions: [
                                                       TextButton(onPressed: (){
                                                         Navigator.pop(context);
-                                                      }, child: Text(
+                                                      }, child: const Text(
                                                         'Não',
                                                         style: TextStyle(
                                                             fontSize: 19
@@ -1664,7 +1663,7 @@ class _MainListaState extends State<MainLista> {
 
                                                           Navigator.pop(context);
                                                         });
-                                                      }, child: Text(
+                                                      }, child: const Text(
                                                         'Sim',
                                                         style: TextStyle(
                                                             fontSize: 19
@@ -1687,13 +1686,13 @@ class _MainListaState extends State<MainLista> {
                                                   context: context,
                                                   builder: (BuildContext context) {
                                                     return AlertDialog(
-                                                      title: Text(
+                                                      title: const Text(
                                                         'Você chegou?',
                                                         style: TextStyle(
                                                             fontSize: 19
                                                         ),
                                                       ),
-                                                      content: Text(
+                                                      content: const Text(
                                                         'Você chegou?',
                                                         style: TextStyle(
                                                             fontSize: 19
@@ -1708,7 +1707,7 @@ class _MainListaState extends State<MainLista> {
                                                           MapsLauncher.launchCoordinates(location['latitude']!, location['longitude']!, 'Entrega');
 
                                                           Navigator.pop(context);
-                                                        }, child: Text(
+                                                        }, child: const Text(
                                                           'Desejo ver a localização novamente',
                                                           style: TextStyle(
                                                               fontSize: 19
@@ -1717,7 +1716,7 @@ class _MainListaState extends State<MainLista> {
                                                         ),
                                                         TextButton(onPressed: (){
                                                           Navigator.pop(context);
-                                                        }, child: Text(
+                                                        }, child: const Text(
                                                           'Não',
                                                           style: TextStyle(
                                                               fontSize: 19
@@ -1741,7 +1740,7 @@ class _MainListaState extends State<MainLista> {
                                                             );
                                                             Navigator.pop(context);
                                                           });
-                                                        }, child: Text(
+                                                        }, child: const Text(
                                                           'Sim',
                                                           style: TextStyle(
                                                               fontSize: 19
@@ -1761,7 +1760,7 @@ class _MainListaState extends State<MainLista> {
                                   }
                                 }
                               },
-                              child: Text(
+                              child: const Text(
                                 'Mudar Status',
                                 style: TextStyle(
                                     fontSize: 18,
@@ -1790,7 +1789,7 @@ class _MainListaState extends State<MainLista> {
 
             Navigator.push(context,
                 MaterialPageRoute(builder: (context){
-                  return SolcitacaoEntregaWeb();
+                  return const SolcitacaoEntregaWeb();
                 }));
 
           }else{
@@ -1798,21 +1797,21 @@ class _MainListaState extends State<MainLista> {
 
               Navigator.push(context,
                   MaterialPageRoute(builder: (context){
-                    return SolcitacaoEntrega();
+                    return const SolcitacaoEntrega();
                   }));
 
             }
           }
         },
         backgroundColor: Colors.orange,
-        child: Icon(Icons.add),
-      ): Text('')
+        child: const Icon(Icons.add),
+      ): const Text('')
         ,floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         bottomNavigationBar: BottomAppBar(
           child: Row(
             children: [
               IconButton(
-                icon: Row(
+                icon: const Row(
                   children: [
                     Icon(Icons.monetization_on),
                     Text('Doe para o Desenvolvimento do app!')
@@ -1825,7 +1824,7 @@ class _MainListaState extends State<MainLista> {
                     barrierDismissible: false,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text(
+                        title: const Text(
                           'Faça um donate para o desenvolvedor do app',
                           style: TextStyle(
                               fontSize: 19,
@@ -1839,14 +1838,14 @@ class _MainListaState extends State<MainLista> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
+                              const Text(
                                 'Faça uma doação para o desenvolvedor!\nQualquer valor é valido!',
                                 style: TextStyle(
                                     fontSize: 19
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.all(16),
+                                padding: const EdgeInsets.all(16),
                                 child:
                                 TextFormField(
                                   onChanged: (vaalor){
@@ -1857,7 +1856,7 @@ class _MainListaState extends State<MainLista> {
                                   obscureText: false,
                                   //enableSuggestions: false,
                                   //autocorrect: false,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     hintText: 'Valor',
                                     hintStyle: TextStyle(
@@ -1890,7 +1889,7 @@ class _MainListaState extends State<MainLista> {
                                 Navigator.pop(context);
                               }
                             }
-                          }, child: Text(
+                          }, child: const Text(
                             'Ok',
                             style: TextStyle(
                                 fontSize: 19
@@ -1908,17 +1907,17 @@ class _MainListaState extends State<MainLista> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Baixe a versão Mobile do app!'),
-                      content: Text('Tendo uma versão Mobile Android terá carregamentos mais rapidos e mais funções desbloqueadas!\n Está esperando o que? Baixe já!'),
+                      title: const Text('Baixe a versão Mobile do app!'),
+                      content: const Text('Tendo uma versão Mobile Android terá carregamentos mais rapidos e mais funções desbloqueadas!\n Está esperando o que? Baixe já!'),
                       actions: <Widget>[
                         TextButton(
-                          child: Text('Cancelar'),
+                          child: const Text('Cancelar'),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
                         ),
                         TextButton(
-                          child: Text('Ok'),
+                          child: const Text('Ok'),
                           onPressed: () async {
                             Navigator.of(context).pop();
                             const url = 'https://github.com/HeroRickyGAMES/Projeto-Pede-Facil-Entregadores/releases';
@@ -1938,12 +1937,12 @@ class _MainListaState extends State<MainLista> {
                     );
                   },
                 );
-              }, icon: Row(
+              }, icon: const Row(
                 children: [
                   Icon(Icons.download),
                   Text('Baixe a versão Android do aplicativo!')
                 ],
-              )): Text('')
+              )): const Text('')
             ],
           ),
         ),

@@ -53,7 +53,7 @@ class _configModalState extends State<configModal> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
             'Configurações',
           style: TextStyle(
             color: Colors.black
@@ -66,7 +66,7 @@ class _configModalState extends State<configModal> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child:
             TextFormField(
               controller: nameController,
@@ -79,16 +79,16 @@ class _configModalState extends State<configModal> {
               //enableSuggestions: false,
               //autocorrect: false,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 hintText: HolderName,
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                     fontSize: 20
                 ),
               ),
             ),
           ),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child:
             TextFormField(
               controller: cpfController,
@@ -101,9 +101,9 @@ class _configModalState extends State<configModal> {
               //enableSuggestions: false,
               //autocorrect: false,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 hintText: HolderCPF,
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                     fontSize: 20
                 ),
               ),
@@ -111,7 +111,7 @@ class _configModalState extends State<configModal> {
           ),
           widget.loja == false ?
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child:
             TextFormField(
               controller: PubKeyController,
@@ -123,7 +123,7 @@ class _configModalState extends State<configModal> {
               obscureText: false,
               //enableSuggestions: false,
               //autocorrect: false,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Sua Chave Publica do Mercado Pago',
                 hintStyle: TextStyle(
@@ -131,10 +131,10 @@ class _configModalState extends State<configModal> {
                 ),
               ),
             ),
-          ): Text(''),
+          ): const Text(''),
           widget.loja == false ?
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child:
             TextFormField(
               controller: AssKeyController,
@@ -146,7 +146,7 @@ class _configModalState extends State<configModal> {
               obscureText: false,
               //enableSuggestions: false,
               //autocorrect: false,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Seu Access Token do Mercado Pago',
                 hintStyle: TextStyle(
@@ -154,9 +154,9 @@ class _configModalState extends State<configModal> {
                 ),
               ),
             ),
-          ): Text(''),
+          ): const Text(''),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: ElevatedButton(
               onPressed: (){
                 if(widget.loja == true){
@@ -278,7 +278,7 @@ class _configModalState extends State<configModal> {
                 }
               },
               child:
-              Text(
+              const Text(
                   'Confirmar',
                 style: TextStyle(
                   color: Colors.white
